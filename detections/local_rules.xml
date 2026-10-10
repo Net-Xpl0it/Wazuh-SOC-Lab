@@ -1,0 +1,74 @@
+<!-- Custom Wazuh detections from the MYDFIR-JAYASURYA lab -->
+<!-- Only rules that fired on live events are included -->
+<!-- Evidence: ../screenshots/02-custom-rule-alerts.png (100202-100204), ../screenshots/04-ssh-bruteforce-alert.png (100101) -->
+<!-- Deploy to /var/ossec/etc/rules/local_rules.xml on the Wazuh manager, then restart the manager -->
+
+<group name="windows,windows_security,account_changed,">
+
+  <rule id="100202" level="10">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4724$</field>
+    <description>MYDFIR-Jayasurya Windows user account password was reset by an administrator.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+    <group>
+      windows,
+      windows_account_management,
+      password_reset,
+    </group>
+  </rule>
+
+  <rule id="100203" level="12">
+    <if_sid>60111</if_sid>
+    <field name="win.system.eventID">^4726$</field>
+    <description>MYDFIR-Jayasurya Windows user account was deleted.</description>
+    <mitre>
+      <id>T1531</id>
+    </mitre>
+    <group>
+      windows,
+      windows_account_management,
+      account_deleted,
+    </group>
+  </rule>
+
+</group>
+
+<group name="windows,windows_security,account_changed,adduser">
+
+  <rule id="100204" level="12">
+    <if_group>windows_security</if_group>
+    <field name="win.system.eventID">^4720$</field>
+    <field name="win.eventdata.targetUserName">^the_user$</field>
+    <description>MYDFIR-Jayasurya Suspicious account "the_user" was created.</description>
+    <mitre>
+      <id>T1136</id>
+    </mitre>
+    <group>
+      windows,
+      windows_account_management,
+      account_created,
+      watchlist_account,
+    </group>
+  </rule>
+
+</group>
+
+<group name="local,syslog,sshd,authentication_failed,">
+
+  <rule id="100101" level="10" frequency="3" timeframe="120">
+    <if_matched_sid>5760</if_matched_sid>
+    <same_source_ip />
+    <description>Multiple SSH login failures observed from the same source IP</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+    <group>
+      authentication_failed,
+      ssh_bruteforce,
+      credential_access,
+    </group>
+  </rule>
+
+</group>

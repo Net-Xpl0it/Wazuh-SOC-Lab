@@ -2,7 +2,7 @@
 
 A hands-on SOC lab built while following the MyDFIR 7-Day SOC Challenge. A Wazuh manager, indexer and dashboard on a Debian laptop monitor cloud endpoints over a mesh VPN. The lab includes custom detection rules mapped to MITRE ATT&CK, file integrity monitoring, a custom dashboard and a written investigation report.
 
-Credit to the MyDFIR SOC Analyst challenge for the exercise. This repo contains my own configs, results and write-up, not the course material. It includes only the work I captured evidence for — detections that are configured but untested are called out as such, not claimed as proven.
+Credit to the [MyDFIR](https://www.youtube.com/@MyDFIR) SOC Analyst challenge and to Steven Mah for the exercise. This repo contains my own configs, results and write-up, not the course material. It includes only the work I captured evidence for — detections that are configured but untested are called out as such, not claimed as proven.
 
 ## Lab environment
 

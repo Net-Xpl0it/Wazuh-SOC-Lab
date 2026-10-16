@@ -26,7 +26,7 @@ Wazuh runs on a Debian laptop (manager, indexer and dashboard) and monitors a Wi
 
 **Where:** The home hybrid lab. The Wazuh manager, indexer and dashboard run on a Debian laptop, and the targets are a Windows Server 2022 and an Ubuntu 24.04 instance on AWS EC2, connected over Tailscale.
 
-**Why:** Not a real incident. This was a deliberate, self-directed training exercise under the MyDFIR SOC Analyst challenge, aimed at checking that the detection stack catches known attack patterns rather than only reading about them.
+**Why:** Not a real incident. This was a deliberate, self-directed training exercise under the MyDFIR SOC Analyst challenge (credit to MyDFIR and Steven Mah for the exercise design), aimed at checking that the detection stack catches known attack patterns rather than only reading about them.
 
 **How:**
 - RDP brute force: Hydra run against the RDP service with repeated password attempts.
